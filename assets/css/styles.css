@@ -1,0 +1,277 @@
+/* Core Styling */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: #000000;
+    color: #8892b0;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* --- Navigation & Blue Glow --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid #1a1a1a;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+}
+.site-header.show { transform: translateY(0); }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    align-items: center;
+}
+
+/* Logo Blue Glow */
+.logo { 
+    color: #fff; 
+    text-decoration: none; 
+    font-weight: 600; 
+    font-size: 1.4rem; 
+    transition: 0.3s;
+}
+.logo:hover {
+    color: #007bff;
+    text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+}
+
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 2rem; }
+
+/* Links Blue Glow */
+.nav-links a { 
+    text-decoration: none; 
+    color: #fff; 
+    font-size: 0.9rem; 
+    transition: 0.3s; 
+}
+.nav-links a:hover { 
+    color: #007bff; 
+    text-shadow: 0 0 10px #007bff;
+}
+/* Sections - Full width filling */
+.section {
+    padding: 100px 4rem; /* Wide padding for full-screen feel */
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.8s all ease;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.full-container { width: 100%; }
+
+.hero { height: 100vh; text-align: center; }
+/* =========================
+   Typing Effect Text
+   ========================= */
+.typing-text {
+  font-size: 0.95rem;
+  color: #6fa8ff;
+  margin-bottom: 1.2rem;
+  letter-spacing: 1px;
+}
+/* =========================
+   Hero Subtitle Spacing
+   ========================= */
+.hero p {
+  font-size: 1.125rem;
+  margin-bottom: 3rem; /* space between subtitle and button */
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; color: #fff; }
+
+/* =========================
+   FORCE PREMIUM CTA BUTTON
+   ========================= */
+a.btn.btn-primary {
+  background-color: transparent !important;
+  color: #007bff !important;
+  border: 1.5px solid #007bff !important;
+  border-radius: 6px;
+  padding: 0.9rem 2.2rem;
+  letter-spacing: 1px;
+  box-shadow: 0 0 0 rgba(111,168,255,0);
+  transition: all 0.35s ease;
+}
+
+a.btn.btn-primary:hover,
+a.btn.btn-primary:focus {
+  background-color: #007bff !important;
+  color: #000000 !important;
+  box-shadow: 0 0 18px rgba(52, 133, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+a.btn.btn-primary:active {
+  background-color: #007bff !important;
+  color: #000000 !important;
+  box-shadow: 0 0 24px rgba(52, 133, 255, 0.6);
+  transform: scale(0.97);
+}
+
+.section-title { font-size: 2rem; margin-bottom: 40px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+
+/* 3D Project Cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    text-decoration: none;
+    color: #fff;
+    transition: 0.5s all;
+    perspective: 1000px;
+}
+
+.project-card:hover {
+    transform: perspective(1000px) rotateX(3deg) rotateY(3deg) translateY(-5px);
+    border-color: #007bff;
+    box-shadow: 0 10px 40px rgba(0, 123, 255, 0.3); /* Blue Glow shadow only on card hover */
+}
+
+.card-image img {
+    width: 100%;
+    height: 250px; /* Fixed height for all */
+    object-fit: cover;
+}
+
+.card-info { padding: 20px; }
+
+/* Social Logos */
+.social-icons { display: flex; gap: 30px; margin-top: 20px; }
+.social-icons img {
+    width: 40px;
+    height: 40px;
+    transition: 0.3s transform;
+}
+.social-icons img:hover { transform: scale(1.2); }
+
+/* --- Project Detail Page (Fixed Image Size) --- */
+.project-detail {
+    padding: 100px 2rem 4rem;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    color: #fff;
+}
+
+.project-detail h1 { margin-bottom: 1.5rem; }
+
+.project-detail img {
+    width: 100%;
+    max-width: 450px; /* Changed from 600px to "Normal" size */
+    height: auto;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.project-detail p {
+    color: #8892b0;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* --- General Section Visibility --- */
+.section {
+    padding: 100px 4rem;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.8s ease-out;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+
+.btn-primary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 1px solid #007bff;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+.btn-primary:hover {
+    background: rgba(0, 123, 255, 0.1);
+    box-shadow: 0 0 15px #007bff;
+}
+/* =========================
+   Contact Section Centering
+   ========================= */
+.contact-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #6fa8ff;
+  margin-bottom: 2rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.social-icons a img {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-links a:hover img {
+  transform: translateY(-4px) scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(111,168,255,0.6));
+}
+.site-footer {
+  text-align: center;
+  padding: 2rem 0;
+  font-size: 0.85rem;
+  color: #777;
+  background-color: #000;
+  letter-spacing: 1px;
+}
+/* =========================
+   FORCE CENTER: Contact Title
+   ========================= */
+.contact-section {
+  text-align: center;
+}
+
+.secton-title {
+  width: 100%;
+  margin: 0 auto 2rem auto;
+  text-align: center !important;
+  color: #6fa8ff;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
